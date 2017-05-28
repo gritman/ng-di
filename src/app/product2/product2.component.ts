@@ -8,12 +8,12 @@ import {AnotherProductService} from '../shared/another-product.service';
   styleUrls: ['./product2.component.css'],
   // 当一个提供器声明在模块中时,只对该组件及其子组件可见,其他组件不可以使用
   // 当组件提供器和模块提供器的provide相同时,组件提供器优先
-  providers: [
-    {
+  /*providers: [
+  {
       provide: ProductService,
       useClass: AnotherProductService
     }
-  ]
+  ]*/
 })
 export class Product2Component implements OnInit {
 

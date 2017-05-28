@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {LoggerService} from 'app/shared/logger.service';
+import {LoggerService} from './logger.service';
 
 // @Injectable的意思是,其他服务也可以注入到ProductService这个服务中
 // 而ProductService这个服务能不能注入到其他地方,是要看其有没有在providers这个提供器里被提供
@@ -7,7 +7,7 @@ import {LoggerService} from 'app/shared/logger.service';
 @Injectable()
 export class ProductService {
 
-  constructor(private logger: LoggerService) {
+  constructor(public logger: LoggerService) {
   }
 
   getProduct(): Product {

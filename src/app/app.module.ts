@@ -29,17 +29,21 @@ import {AnotherProductService} from './shared/another-product.service';
     {
       provide: ProductService,
       // 工厂方法创建的对象是单例对象,只会创建一次,所以所有的ProductService都是同一个实例!
-      useFactory: (logger: LoggerService) => {
-        const dev = Math.random() > 0.5;
-        if (dev) {
+      useFactory: (logger: LoggerService, appConfig) => {
+        if (appConfig.isDev) {
           return new ProductService(logger);
         } else {
           return new AnotherProductService(logger);
         }
       },
-      deps: [LoggerService] // 声明工厂需要的参数,也是依赖注入的
+      deps: [LoggerService, 'APP_CONFIG'] // 声明工厂需要的参数,也是依赖注入的
     },
-    LoggerService
+    LoggerService,
+    {
+      // 提供器,提供一个变量
+      provide: 'APP_CONFIG',
+      useValue: {isDev: false}
+    }
   ],
   bootstrap: [AppComponent]
 })

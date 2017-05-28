@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Product, ProductService} from '../shared/product.service';
 
 @Component({
   selector: 'app-product1',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Product1Component implements OnInit {
 
-  constructor() { }
+  product: Product;
+
+  // 声明productService需要从外部注入
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
+    this.product = this.productService.getProduct();
   }
 
 }

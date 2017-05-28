@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { Product1Component } from './product1/product1.component';
 import {ProductService} from './shared/product.service';
 import { Product2Component } from './product2/product2.component';
+import {LoggerService} from "./shared/logger.service";
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { Product2Component } from './product2/product2.component';
   // 当一个提供器声明在模块中时,它是对所有模块可见的
   // 如果组件没有声明提供器,它就会去找模块的提供器
   // 优先把提供器声明在模块中,只有必须对其他组件不可见时,才声明在组件中
-  providers: [ProductService],
+  providers: [ProductService, LoggerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
